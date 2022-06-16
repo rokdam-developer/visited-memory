@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="mytitle">
-      <h1>My Memory</h1>
+      <h1>My Visited Place 🎈</h1>
       <a class="btn" href="#">다른 사람의 추억 보러가기 ></a>
     </div>
     <div class="box">
@@ -24,40 +24,40 @@
         </p>
       </div>
     </div>
-    <script
-      type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=74f482776f033f513ea59700c4a79497"
-    ></script>
-    <script>
-      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-        mapOption = {
-          center: new kakao.maps.LatLng(129.166589, 35.1601536), // 지도의 중심좌표
-          level: 4, // 지도의 확대 레벨
-        };
-
-      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-      var imageSrc =
-          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png", // 마커이미지의 주소입니다
-        imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-        imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-      // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-      var markerImage = new kakao.maps.MarkerImage(
-          imageSrc,
-          imageSize,
-          imageOption
-        ),
-        markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-
-      // 마커를 생성합니다
-      var marker = new kakao.maps.Marker({
-        position: markerPosition,
-        image: markerImage, // 마커이미지 설정
-      });
-
-      // 마커가 지도 위에 표시되도록 설정합니다
-      marker.setMap(map);
-    </script>
   </body>
+  <script
+    type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=74f482776f033f513ea59700c4a79497"
+  ></script>
+  <script>
+    var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+      mapOption = {
+        center: new kakao.maps.LatLng(35.1601536, 129.166589), // 지도의 중심좌표
+        level: 4, // 지도의 확대 레벨
+      };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    var imageSrc =
+        "https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/2021_05_free_parents/sparta-marker.png", // 마커이미지의 주소입니다
+      imageSize = new kakao.maps.Size(50, 68), // 마커이미지의 크기입니다
+      imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    var markerImage = new kakao.maps.MarkerImage(
+        imageSrc,
+        imageSize,
+        imageOption
+      ),
+      markerPosition = new kakao.maps.LatLng(35.1601536, 129.166589); // 마커가 표시될 위치입니다
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      image: markerImage, // 마커이미지 설정
+    });
+
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+  </script>
 </html>
