@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Memory😍</title>
+  </head>
+  <body>
+    <div class="mytitle">
+      <h1>My Memory</h1>
+      <a class="btn" href="#">다른 사람의 추억 보러가기 ></a>
+    </div>
+    <div class="box">
+      <div class="map" id="map"></div>
+      <div class="story">
+        <div class="img"></div>
+        <h2>더 파티 해운대점</h2>
+        <h3>부산 해운대구 해운대해변로298번길 24 팔레드시즈 지하1층</h3>
+        <p>
+          2017년도 해운대 여행갔을때 들렸던 해산물 뷔페. 규모도 꽤 컸고, 메뉴도
+          다양하고 숙소였던 파라다이스호텔과도 가까워서 다녀오기 좋았다.
+        </p>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=74f482776f033f513ea59700c4a79497"
+    ></script>
+    <script>
+      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+        mapOption = {
+          center: new kakao.maps.LatLng(129.166589, 35.1601536), // 지도의 중심좌표
+          level: 4, // 지도의 확대 레벨
+        };
+
+      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+      var imageSrc =
+          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png", // 마커이미지의 주소입니다
+        imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+        imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+      // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+      var markerImage = new kakao.maps.MarkerImage(
+          imageSrc,
+          imageSize,
+          imageOption
+        ),
+        markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
+
+      // 마커를 생성합니다
+      var marker = new kakao.maps.Marker({
+        position: markerPosition,
+        image: markerImage, // 마커이미지 설정
+      });
+
+      // 마커가 지도 위에 표시되도록 설정합니다
+      marker.setMap(map);
+    </script>
+  </body>
+</html>
