@@ -4,10 +4,110 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <meta property="og:title" content="록담 님의 추억사진" />
     <meta property="og:description" content="내가 만든 첫번째 웹페이지!" />
     <meta property="og:image" content="/image/img1.JPG" />
+    <style>
+      /* title */
+      .mytitle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      .btn {
+        border: 2px solid tomato;
+        color: tomato;
+        font-weight: bold;
+        width: 300px;
+        height: 40px;
+        text-decoration: none;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 40px;
+      }
+
+      .btn:hover {
+        background-color: tomato;
+        color: white;
+      }
+
+      /* box */
+      .box {
+        width: 1000px;
+        display: flex;
+        justify-content: center;
+        margin: 40px auto;
+      }
+
+      .map {
+        width: 500px;
+        height: 500px;
+        margin-right: 30px;
+        border-radius: 20px;
+      }
+
+      .story {
+        width: 450px;
+        height: 500px;
+      }
+
+      .img {
+        width: 450px;
+        height: 300px;
+        background-image: url("/image/img1.JPG");
+        background-position: center;
+        background-size: cover;
+        border-radius: 24px;
+      }
+
+      .story > h2 {
+        margin: 20px 0 0 0;
+        color: rgb(116, 106, 255);
+      }
+
+      .story > h3 {
+        font-size: 16px;
+        margin: 5px 0 0 0;
+        color: gray;
+        font-weight: 400;
+      }
+
+      .story > p {
+        line-height: 24px;
+      }
+
+      /* mobile-scrren setting */
+      @media screen and (max-width: 640px) {
+        h1 {
+          font-size: 26px;
+        }
+
+        .box {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .map {
+          width: 100%;
+          height: 200px;
+          margin: 0 0 0 0;
+        }
+
+        .story {
+          width: 100%;
+          height: auto;
+          margin-top: 10px;
+        }
+
+        .img {
+          width: 100%;
+          height: 200px;
+        }
+      }
+    </style>
     <title>Visited Memory😍</title>
   </head>
   <body>
@@ -22,45 +122,46 @@
         <h2>더 파티 해운대점</h2>
         <h3>부산 해운대구 해운대해변로298번길 24 팔레드시즈 지하1층</h3>
         <p>
-          2017년도 해운대 여행갔을때 들렸던 해산물 뷔페. 규모도 꽤 컸고, 메뉴도
-          다양하고 숙소였던 파라다이스호텔과도 가까워서 다녀오기 좋았다.
+          2017년도 해운대 여행 갔을 때 들렸던 해산물 뷔페. 규모도 꽤 컸고,
+          메뉴도 다양하고 숙소였던 파라다이스호텔과도 가까워서 다녀오기 좋았음.
         </p>
       </div>
     </div>
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f8b1bfadc71739b9abc66e9c6488ca6"
+    ></script>
+    <script>
+      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+        mapOption = {
+          center: new kakao.maps.LatLng(35.1601536, 129.166589), // 지도의 중심좌표
+          level: 4, // 지도의 확대 레벨
+        };
+
+      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+      var imageSrc =
+          "https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/2021_05_free_parents/sparta-marker.png", // 마커이미지의 주소입니다
+        imageSize = new kakao.maps.Size(50, 69), // 마커이미지의 크기입니다
+        imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+      // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+      var markerImage = new kakao.maps.MarkerImage(
+          imageSrc,
+          imageSize,
+          imageOption
+        ),
+        markerPosition = new kakao.maps.LatLng(35.1601536, 129.166589); // 마커가 표시될 위치입니다
+
+      // 마커를 생성합니다
+      var marker = new kakao.maps.Marker({
+        position: markerPosition,
+        image: markerImage, // 마커이미지 설정
+      });
+
+      // 마커가 지도 위에 표시되도록 설정합니다
+      marker.setMap(map);
+    </script>
   </body>
-  <script
-    type="text/javascript"
-    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f8b1bfadc71739b9abc66e9c6488ca6"
-  ></script>
-  <script>
-    var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-      mapOption = {
-        center: new kakao.maps.LatLng(35.1601536, 129.166589), // 지도의 중심좌표
-        level: 4, // 지도의 확대 레벨
-      };
-
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-    var imageSrc =
-        "https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/2021_05_free_parents/sparta-marker.png", // 마커이미지의 주소입니다
-      imageSize = new kakao.maps.Size(50, 68), // 마커이미지의 크기입니다
-      imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-    var markerImage = new kakao.maps.MarkerImage(
-        imageSrc,
-        imageSize,
-        imageOption
-      ),
-      markerPosition = new kakao.maps.LatLng(35.1601536, 129.166589); // 마커가 표시될 위치입니다
-
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-      image: markerImage, // 마커이미지 설정
-    });
-
-    // 마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map);
-  </script>
 </html>
